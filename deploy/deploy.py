@@ -11,7 +11,7 @@ CLIENT_SECRET = os.getenv("AZURE_CLIENT_SECRET")
 WORKSPACE_ID = os.getenv("FABRIC_WORKSPACE_ID", "b8284fa4-3266-4b97-84a6-04e6808c474d")
 
 if not CLIENT_SECRET:
-    raise RuntimeError("AZURE_CLIENT_SECRET is not set. Did you configure it in GitHub Secrets?")
+    raise RuntimeError("AZURE_CLIENT_SECRET is not set. Did you configure it in GitHub Secrets?") 
 
 ENVIRONMENT = "prod"
 REPO_DIR = "."
@@ -62,4 +62,5 @@ def main():
     unpublish_all_orphan_items(ws)
 
 if __name__ == "__main__":
+
     main()
