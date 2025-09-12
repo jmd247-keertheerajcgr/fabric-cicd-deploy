@@ -3,7 +3,7 @@ name: Fabric CI/CD Deployment
 on:
   push:
     branches: 
-      - '*dev*' 
+      - '*dev*'
       - '*prod*'
 
 jobs:
@@ -32,9 +32,7 @@ jobs:
       - name: Run deployment script
         run: python deploy/deploy.py
         env:
+          ENVIRONMENT: ${{ github.ref_name }}
           AZURE_TENANT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).tenantId }}
           AZURE_CLIENT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
-
           AZURE_CLIENT_SECRET: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
-
-
