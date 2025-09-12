@@ -3,7 +3,7 @@ name: Fabric CI/CD Deployment
 on:
   push:
     branches: 
-      - '*dev*'
+      - '*dev*' 
       - '*prod*'
 
 jobs:
@@ -36,4 +36,5 @@ jobs:
           AZURE_CLIENT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
 
           AZURE_CLIENT_SECRET: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
+
 
