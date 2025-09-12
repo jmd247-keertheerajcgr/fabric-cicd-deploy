@@ -5,7 +5,15 @@ from fabric_cicd import FabricWorkspace, publish_all_items, unpublish_all_orphan
 import csv
 from pathlib import Path
 
-ENVIRONMENT = "dev"
+raw_env = os.getenv("ENVIRONMENT", "dev").lower()
+
+if raw_env.endswith("dev"):
+    ENVIRONMENT = "dev"
+elif raw_env.endswith("prod"):
+    ENVIRONMENT = "prod"
+else:
+    ENVIRONMENT = raw_env
+    
 REPO_DIR = "."
 ITEM_TYPES = ["Lakehouse", "Notebook", "Environment"]
 
@@ -37,4 +45,5 @@ def main():
     unpublish_all_orphan_items(ws)
 
 if __name__ == "__main__":
+
     main()
