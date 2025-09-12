@@ -1,4 +1,4 @@
-name: Fabric CI/CD Deployment
+yname: Fabric CI/CD Deployment
 
 on:
   push:
@@ -30,8 +30,9 @@ jobs:
         run: pip install --upgrade fabric_cicd msal
 
       - name: Run deployment script
-        run: python deploy.py
+        run: python deploy/deploy.py
         env:
           AZURE_TENANT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).tenantId }}
           AZURE_CLIENT_ID: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
+
           AZURE_CLIENT_SECRET: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
